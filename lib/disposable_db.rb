@@ -1,5 +1,9 @@
 require 'logger'
 require 'tempfile'
+require 'sequel'
+require 'disposable_db/disposable_model'
+require 'disposable_db/database'
+require 'disposable_db/databases/sqlite'
 
 module DisposableDB
   class << self
