@@ -25,22 +25,54 @@ def create_model
   DisposableModel.factory(:database => database, :table_name => tt.name)
 end
 
-n = 100000
+n = 10000
 batch = []
 Benchmark.bm(30) do |x|
   m = create_model
   x.report("generating random data:")   { n.times { generate_random_data(m.columns) } }
 
   m = create_model
-  x.report("single inserts:") { n.times { m.insert(generate_random_data(m.columns)) } }
+  cols = m.columns
+  batch = []
+  v = generate_random_data(cols)
+  result = RubyProf.profile do
+  #x.report("imports with transaction:") do
+    n.times do |i|
+      batch << v.values
+      if batch.length >= 1000
+        m.import(cols, batch)
+        batch = []
+      end
+    end
+    m.import(cols, batch) unless batch.length < 1
+  #end
+  end
+
+  printer = RubyProf::GraphPrinter.new(result)
+  printer.print(STDOUT, {})
+
+  exit
+
+
+# Print a graph profile to text
+  printer = RubyProf::GraphPrinter.new(result)
+  printer.print(STDOUT, {})
+
+  m = create_model
+  x.report("single inserts with transaction:") { m.transaction { n.times { m.insert(generate_random_data(m.columns)) } } }
+
+  m = create_model
+  v = generate_random_data(m.columns)
+  x.report("single inserts:") { n.times { m.insert(v) } }
 
   m = create_model
   h = {}
   m.columns.each { |c| h[c] = :"$new_#{c.to_s}" }
   p = m.dataset.prepare(:insert, :insert_all_columns, h)
+  v = generate_random_data(m.columns, "new_")
   x.report("prepared single inserts:") do
     n.times do
-      p.call(generate_random_data(m.columns, "new_"))
+      p.call(v)
     end
   end
 
@@ -48,12 +80,13 @@ Benchmark.bm(30) do |x|
   x.report("single inserts with transaction:") { m.transaction { n.times { m.insert(generate_random_data(m.columns)) } } }
 
   m = create_model
+  v = generate_random_data(m.columns)
   x.report("multi inserts with transaction:") do
     m.transaction do
       n.times do
-        batch << generate_random_data(m.columns)
-        if batch.length >= 10
-          m.multi_insert(batch)
+        batch build_batch(batch, m.columns, v)
+        if batch.length >= 100
+          m.import(m.columns, batch)
           batch = []
         end
       end

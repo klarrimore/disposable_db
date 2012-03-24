@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', ['>= 2.9.0']
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'ffaker', ['>= 1.13.0']
+  s.add_development_dependency 'ruby-prof'
   # ensure the gem is built out of versioned files
   s.files = Dir['Rakefile', '{bin,lib,test,spec,bench}/**/*', 'README*', 'LICENSE*'] & `git ls-files -z`.split("\0")
   s.require_paths = ["lib"]

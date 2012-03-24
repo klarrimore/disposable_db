@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'ffaker'
 require 'benchmark'
+require 'ruby-prof'
 require 'disposable_db'
 require 'fileutils'
 
