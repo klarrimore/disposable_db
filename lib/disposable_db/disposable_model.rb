@@ -14,6 +14,10 @@ module DisposableDB
               def self.database=(d)
                 @database = d
               end
+
+              def self.transaction(opts = {}, &block)
+                self.database.connection.transaction opts, &block
+              end
             end
 
         m.database = database

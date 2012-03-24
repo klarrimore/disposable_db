@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'bundler/setup'
-
 require 'disposable_db'
 
 include DisposableDB
