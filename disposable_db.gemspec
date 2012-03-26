@@ -8,11 +8,10 @@ Gem::Specification.new do |s|
   s.authors     = ["Keith Larrimore"]
   s.email       = ["keithlarrimore@icehook.com"]
   s.authors     = ['Keith Larrimore']
-  s.homepage    = 'http:\/\/icehook.com'
-  s.date = Date.today.to_s
+  s.homepage    = 'https://github.com/klarrimore/disposable_db'
+  s.date        = Date.today.to_s
   s.summary = 'A utility that makes it easy to create "on-the-fly databases"'
   s.description = 'A utility that makes it easy to create "on-the-fly databases"'
-
 
   #s.rubyforge_project = "disposable_db"
 
