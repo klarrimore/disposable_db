@@ -26,4 +26,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'ffaker', ['>= 1.13.0']
   s.add_development_dependency 'ruby-prof'
   s.add_runtime_dependency 'sequel', ['= 3.33.0']
+  s.add_runtime_dependency 'sqlite3'
 end
