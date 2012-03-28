@@ -13,13 +13,13 @@ describe DisposableModel do
   end
 
   it "has a database with connection" do
-    m = DisposableModel.factory(:database => Database.new(:connection => Sequel.sqlite))
+    m = DisposableModel.factory(:database => Database.new(Sequel.sqlite))
     m.database.connection.should be_a_kind_of(Sequel::SQLite::Database)
   end
 
   it "has a database with adjustable connection" do
-    m1 = DisposableModel.factory(:database => Database.new(:connection => Sequel.sqlite))
-    m2 = DisposableModel.factory(:database => Database.new(:connection => Sequel.sqlite('/tmp/test.db')))
+    m1 = DisposableModel.factory(:database => Database.new(Sequel.sqlite))
+    m2 = DisposableModel.factory(:database => Database.new(Sequel.sqlite('/tmp/test.db')))
     m1.database.connection.uri.should == 'sqlite:/'
     m2.database.connection.uri.should == 'sqlite://tmp/test.db'
   end

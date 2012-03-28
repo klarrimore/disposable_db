@@ -2,8 +2,8 @@ module DisposableDB
   class Database
     attr_accessor :connection
 
-    def initialize(args = {})
-      @connection = args[:connection] || Sequel.sqlite
+    def initialize(connection = nil, opts = {})
+      @connection = connection || Sequel.connect('sqlite:/')
     end
 
     def create_table!(table_template)
