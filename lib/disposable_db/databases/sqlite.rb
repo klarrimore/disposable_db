@@ -5,7 +5,7 @@ module DisposableDB
       def intialize(args = {})
         unless args.has_key? :connection
           if args[:connection_string]
-            args[:connection] = Sequel.sqlite(args[:connection_string])
+            args[:connection] = Sequel.connect(args[:connection_string])
           end
         end
 
