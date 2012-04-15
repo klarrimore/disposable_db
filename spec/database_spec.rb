@@ -20,5 +20,16 @@ describe Database do
     d.create_table tt
     d.table_exists?(tt.name).should be_true
   end
+  
+  it "can create table with primary_key" do
+    tt = TableTemplate.new('foo2', [TableTemplate::Column.new('t1', Integer)])
+    tt.set_primary_key :id
+
+    d = Database.new
+    d.table_exists?(tt.name).should be_false
+    d.create_table tt
+    d.table_exists?(tt.name).should be_true
+    d.connection[:foo2].columns.include?(:id).should be_true
+  end
 
 end

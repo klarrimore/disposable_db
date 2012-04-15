@@ -19,5 +19,13 @@ describe TableTemplate do
 
     tt.columns.length.should == columns.length
   end
+  
+  it "can set primary key" do
+    tt = TableTemplate.new('foo')
+
+    tt.set_primary_key :id
+
+    tt.primary_key == :id
+  end
 
 end

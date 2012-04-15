@@ -1,14 +1,23 @@
 module DisposableDB
   class TableTemplate
-    attr_accessor :name, :columns
+    attr_accessor :name, :columns, :primary_key
 
     def initialize(name, columns = [])
       @name = name
       @columns = columns
+      @indexes = indexes
     end
 
     def add_column(column)
       @columns << column
+    end
+
+    def set_primary_key(pk)
+      @primary_key = pk
+    end
+
+    def indexes
+      @columns.select{ |c| c.indexed == true }.collect{ |c| c.name }
     end
 
     class Column

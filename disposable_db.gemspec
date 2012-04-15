@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ['Keith Larrimore']
   s.homepage    = 'https://github.com/klarrimore/disposable_db'
   s.date        = Date.today.to_s
-  s.summary = 'A utility that makes it easy to create "on-the-fly databases"'
+  s.summary     = 'A utility that makes it easy to create "on-the-fly databases"'
   s.description = 'A utility that makes it easy to create "on-the-fly databases"'
 
   #s.rubyforge_project = "disposable_db"
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,bench,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  s.require_paths = ['lib']
 
   # specify any dependencies here; for example:
   s.add_development_dependency 'rspec', ['>= 2.9.0']

@@ -2,14 +2,14 @@ module DisposableDB
   module Databases
     class SQLite < Database
 
-      def intialize(args = {})
-        unless args.has_key? :connection
-          if args[:connection_string]
-            args[:connection] = Sequel.sqlite(args[:connection_string])
-          end
+      def initialize(args = {})
+        if args[:connection]
+          connection = args[:connection]
+        elsif args[:db_path]
+          connection = Sequel.sqlite args[:db_path]
         end
 
-        super(args)
+        super(connection)
       end
 
     end
