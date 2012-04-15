@@ -38,4 +38,18 @@ describe DisposableModel do
     m.columns.length.should == columns.length
   end
 
+  it "can paginate" do
+    columns = []
+    columns << TableTemplate::Column.new('t1', Integer)
+    columns << TableTemplate::Column.new('t2', String)
+
+    tt = TableTemplate.new('foo', columns)
+
+    database = Databases::SQLite.new
+    database.create_table! tt
+
+    m = DisposableModel.factory(:database => database, :table_name => tt.name)
+    m.paginate(1, 50).page_count == 0
+  end
+
 end
