@@ -7,7 +7,7 @@ require 'disposable_db/database'
 require 'disposable_db/databases/sqlite'
 require 'disposable_db/disposable_model'
 
-Sequel.extension(:pagination, :query)
+Sequel.extension(:pagination, :query, :sql_expr)
 
 module DisposableDB
   class << self

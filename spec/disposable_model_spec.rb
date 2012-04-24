@@ -52,4 +52,18 @@ describe DisposableModel do
     m.paginate(1, 50).page_count == 0
   end
 
+  it "can divide" do
+    columns = []
+    columns << TableTemplate::Column.new('t1', Integer)
+
+    tt = TableTemplate.new('foo', columns)
+
+    database = Databases::SQLite.new
+    database.create_table! tt
+    m = DisposableModel.factory(:database => database, :table_name => tt.name)
+    m.create(:t1 => 10)
+    m.count.should == 1
+    m.dataset.select((50.sql_expr / :t1).as(:result)).first.values[:result].should == 5
+  end
+
 end
