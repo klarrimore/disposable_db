@@ -21,10 +21,10 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   # specify any dependencies here; for example:
-  s.add_development_dependency 'rspec', ['>= 2.9.0']
+  s.add_development_dependency 'rspec', '>= 2.9.0'
   s.add_development_dependency 'bundler'
-  s.add_development_dependency 'ffaker', ['>= 1.13.0']
+  s.add_development_dependency 'ffaker', '>= 1.13.0'
   s.add_development_dependency 'ruby-prof'
-  s.add_runtime_dependency 'sequel', ['= 3.33.0']
-  s.add_runtime_dependency 'sqlite3'
+  s.add_runtime_dependency 'sequel', '= 3.33.0'
+  s.add_runtime_dependency 'sqlite3', '~> 1.3.7'
 end
