@@ -6,6 +6,9 @@ require 'disposable_db/table_template'
 require 'disposable_db/database'
 require 'disposable_db/databases/sqlite'
 require 'disposable_db/disposable_model'
+require 'disposable_db/parser'
+require 'disposable_db/format'
+require 'disposable_db/document'
 
 Sequel.extension(:pagination, :query, :sql_expr)
 
@@ -17,7 +20,7 @@ module DisposableDB
         :log => true
       }
     end
-  
+
     def log(message)
       logger.info("[disposable_db] #{message}") if logging?
     end

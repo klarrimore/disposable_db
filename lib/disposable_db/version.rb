@@ -1,3 +1,3 @@
 module DisposableDB
-  VERSION = '0.0.8' unless defined? DisposableDB::VERSION
+  VERSION = '0.1.0' unless defined? DisposableDB::VERSION
 end

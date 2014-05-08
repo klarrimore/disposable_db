@@ -21,10 +21,14 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   # specify any dependencies here; for example:
-  s.add_development_dependency 'rspec', ['>= 2.9.0']
-  s.add_development_dependency 'bundler'
-  s.add_development_dependency 'ffaker', ['>= 1.13.0']
-  s.add_development_dependency 'ruby-prof'
-  s.add_runtime_dependency 'sequel', ['= 3.33.0']
-  s.add_runtime_dependency 'sqlite3'
+  s.add_development_dependency 'bundler', '~> 1.3'
+  s.add_development_dependency 'rspec', '>= 2.13.0'
+  s.add_development_dependency 'ffaker', '~> 1.15.0'
+  s.add_development_dependency 'machinist', '~> 2.0'
+  s.add_development_dependency 'webmock', '~> 1.9.3'
+  s.add_development_dependency 'guard-rspec', '~> 2.5.0'
+  s.add_development_dependency 'rb-fsevent', '~> 0.9.3'
+  s.add_development_dependency 'simplecov', '~> 0.7.1'
+  s.add_runtime_dependency 'sequel', '~> 4.5.0'
+  s.add_runtime_dependency 'sqlite3', '~> 1.3.9'
 end
