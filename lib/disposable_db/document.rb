@@ -30,6 +30,7 @@ module DisposableDB
 
       new_columns = self.column_names
 
+      @db.drop_table? :document
       @db.create_table :document do
         primary_key :id
         column :line_number, Integer
