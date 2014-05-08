@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', '>= 2.13.0'
   s.add_development_dependency 'ffaker', '~> 1.15.0'
   s.add_development_dependency 'machinist', '~> 2.0'
-  s.add_development_dependency 'webmock', '~> 1.9.3'
   s.add_development_dependency 'guard-rspec', '~> 2.5.0'
   s.add_development_dependency 'rb-fsevent', '~> 0.9.3'
   s.add_development_dependency 'simplecov', '~> 0.7.1'
